@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	# Agacharse 
 	if Input.is_action_pressed("duck") and is_on_floor():
 		_start_duck()
-		$duck_sound.play()
 	else:
 		_stop_duck()
 	
@@ -37,6 +36,7 @@ func _start_duck():
 	if is_ducking:
 		return
 	is_ducking = true
+	$duck_sound.play()
 	collision_standing.set_deferred("disabled", true)
 	collision_ducking.set_deferred("disabled", false)
 	
