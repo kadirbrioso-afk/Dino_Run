@@ -12,7 +12,13 @@ extends CharacterBody2D
 
 var is_ducking: bool = false
 
+func  _ready() -> void:
+	GameManager.game_over.connect(_on_game_over)
+
 func _physics_process(delta: float) -> void:
+	if not GameManager.is_game_running:
+		return
+	
 	# Aplicar gravedad si no está en el suelo
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -59,4 +65,7 @@ func _update_animation():
 	else:
 		sprite.play("run")
 		
-	
+
+func _on_game_over() -> void:
+	# Reproducir animacion de golpe (Game Over)
+	sprite.play("hurt")

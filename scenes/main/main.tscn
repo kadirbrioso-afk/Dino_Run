@@ -1,21 +1,36 @@
 [gd_scene format=3 uid="uid://b0elq8qwpbqm0"]
 
-[ext_resource type="Script" uid="uid://d384n4pt4nqrb" path="res://script/main.gd" id="1_l3cfh"]
+[ext_resource type="Script" uid="uid://d384n4pt4nqrb" path="res://script/main.gd" id="1_hujxm"]
 [ext_resource type="PackedScene" uid="uid://brerqo1ovoe82" path="res://scenes/main/back_ground.tscn" id="2_6q06x"]
 [ext_resource type="PackedScene" uid="uid://s6qjfiyvdxq" path="res://scenes/main/ground.tscn" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://n6usor7lijcw" path="res://scenes/player/dino.tscn" id="4_hujxm"]
+[ext_resource type="PackedScene" uid="uid://bpbh7v4oewi4s" path="res://scenes/obstacles/bush.tscn" id="4_l3cfh"]
+[ext_resource type="Script" uid="uid://cjb7vg6uuxp28" path="res://script/obstacle_spawner.gd" id="4_ow5a4"]
+[ext_resource type="PackedScene" uid="uid://bao3ydhahwxw" path="res://scenes/obstacles/crow.tscn" id="5_6q06x"]
 
 [node name="Main" type="Node" unique_id=328504696]
-script = ExtResource("1_l3cfh")
+script = ExtResource("1_hujxm")
 
 [node name="BackGround" parent="." unique_id=2066364665 instance=ExtResource("2_6q06x")]
+scroll_speed = 300.0
 
 [node name="Ground" parent="." unique_id=1892139230 instance=ExtResource("3_ow5a4")]
 position = Vector2(0, 8)
-script = null
 
 [node name="Dino" parent="." unique_id=407414895 instance=ExtResource("4_hujxm")]
 position = Vector2(100, 470)
+gravity = 4000.0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=243069126]
-position = Vector2(640, 360)
+[node name="ObstacleSpawner" type="Node2D" parent="." unique_id=1742927930]
+script = ExtResource("4_ow5a4")
+bush_escene = ExtResource("4_l3cfh")
+crow_escene = ExtResource("5_6q06x")
+
+[node name="SpawnPointGround" type="Marker2D" parent="ObstacleSpawner" unique_id=142478984]
+position = Vector2(1350, 640)
+
+[node name="SpawnPointAir" type="Marker2D" parent="ObstacleSpawner" unique_id=855419147]
+position = Vector2(1350, 510)
+
+[node name="Timer" type="Timer" parent="ObstacleSpawner" unique_id=189060833]
+autostart = true

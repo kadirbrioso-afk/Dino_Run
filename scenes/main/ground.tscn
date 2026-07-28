@@ -2,28 +2,25 @@
 
 [ext_resource type="Script" uid="uid://d2foon0vq702d" path="res://script/ground.gd" id="1_tepgu"]
 [ext_resource type="Texture2D" uid="uid://pnii54nfrk2h" path="res://assets/sprites/environment/ground.png" id="2_qfj6y"]
-[ext_resource type="PackedScene" uid="uid://brerqo1ovoe82" path="res://scenes/main/back_ground.tscn" id="3_qfj6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i3vi"]
-size = Vector2(2303, 90)
+size = Vector2(1279.5, 91.5)
 
-[node name="Ground" type="StaticBody2D" unique_id=1892139230]
+[node name="Ground" type="Node2D" unique_id=105478946]
 script = ExtResource("1_tepgu")
 
-[node name="GroundSegmentA" type="Sprite2D" parent="." unique_id=580173756]
-position = Vector2(1154, 681)
-texture = ExtResource("2_qfj6y")
-
 [node name="GroundSegmentB" type="Sprite2D" parent="." unique_id=1918215281]
-position = Vector2(3458, 681)
+position = Vector2(2304, 640)
 texture = ExtResource("2_qfj6y")
+centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1888223719]
-position = Vector2(1152.5, 683)
+[node name="GroundSegmentA" type="Sprite2D" parent="." unique_id=580173756]
+position = Vector2(0, 640)
+texture = ExtResource("2_qfj6y")
+centered = false
+
+[node name="FloorCollision" type="StaticBody2D" parent="." unique_id=1429024936]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision" unique_id=1648938921]
+position = Vector2(640, 688)
 shape = SubResource("RectangleShape2D_8i3vi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=152804918]
-position = Vector2(3456, 683)
-shape = SubResource("RectangleShape2D_8i3vi")
-
-[node name="BackGround" parent="." unique_id=2066364665 instance=ExtResource("3_qfj6y")]

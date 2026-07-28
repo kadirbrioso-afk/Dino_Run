@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bpbh7v4oewi4s"]
+
+[ext_resource type="Script" uid="uid://jmhi4firhkqt" path="res://script/obstacle.gd" id="1_23f01"]
+[ext_resource type="Texture2D" uid="uid://bj6pgb8acohuk" path="res://assets/sprites/obstacles/Pixel Art Bush Pack/Bush 2/Bush 2_YELLOW.png" id="2_x7lxn"]
+
+[node name="bush" type="Area2D" unique_id=1276565664 groups=["Obstacles"]]
+script = ExtResource("1_23f01")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1751608768]
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_x7lxn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1797535103]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(1, -21, -1, -21, -1, -17.5, -2, -17.5, -2, -14.5, -3, -14.5, -3, -10.5, -4, -10.5, -4, -6.5, -5, -6.5, -5, -0.5, -6, -0.5, -6, 0.5, -7, 0.5, -7, -1.5, -8, -1.5, -8, -2.5, -9, -2.5, -9, -3.5, -10, -3.5, -10, -4.5, -11, -4.5, -11, -5.5, -12.2, -5.5, -13.2, -7.5, -15, -7.5, -15, -0.5, -14, -0.5, -14, 4.5, -13, 4.5, -13, 7.5, -14.2, 5.5, -16.2, 5.5, -17.2, 3.5, -20, 3.5, -20, 2.5, -24, 2.5, -24, 4.5, -23, 4.5, -23, 5.299999, -21, 6.200001, -21, 8.5, -20, 8.5, -20, 9.299999, -18, 10.200001, -18, 12.5, -24, 12.5, -24, 13.5, -26.5, 13.5, -26.5, 15.5, -26, 16.5, -23, 16.5, -23, 17.5, -21, 17.5, -21, 18.5, -19, 18.5, -19, 19.5, -16.8, 19.5, -16.1, 21, 18, 21, 19, 20.5, 19, 19.5, 20, 19.5, 20, 18.5, 20.8, 18.5, 21.8, 16.5, 23.8, 16.5, 24.8, 14.5, 26, 14.5, 26, 12.5, 21, 12.5, 21, 11.5, 22, 11.5, 22, 9.5, 23, 9.5, 23, 8.5, 24, 8.5, 24, 7.5, 24.8, 7.5, 25.8, 5.5, 26.5, 5.5, 26.5, 3.5, 22, 3.5, 22, 4.5, 20, 4.5, 20, 5.5, 18.2, 5.5, 17.2, 7.5, 17, 5.5, 18, 5.5, 18, 4.200001, 20, 3.2999992, 20, 1.2000008, 24, -0.70000076, 24, -2.5, 17, -2.5, 17, -1.5, 15, -1.5, 15, -0.5, 14, -0.5, 14, 0.5, 13.200001, 0.5, 13, -5.5, 14, -5.5, 14, -10.5, 15, -10.5, 15, -13.5, 13, -13.5, 13, -12.5, 12, -12.5, 12, -11.5, 11.200001, -11.5, 10.200001, -9.5, 9, -9.5, 9, -7.5, 8, -7.5, 8, -6.5, 7, -6.5, 7, -4.5, 6.0999985, -4.5, 5.1000004, -0.5, 5, -6.5, 4, -6.5, 4, -11.5, 3, -11.5, 3, -15.5, 2, -15.5, 2, -19.5, 1, -19.5)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1601562236]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

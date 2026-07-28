@@ -1,6 +1,6 @@
-extends StaticBody2D
+extends Node2D
 
-@export var scroll_speed: float = 600.0
+@export var scroll_speed: float = 500.0
 @onready var segments: Array[Sprite2D] = [$GroundSegmentA, $GroundSegmentB]
 
 var segment_width: float
@@ -9,6 +9,9 @@ func _ready() -> void:
 	segment_width = segments[0].texture.get_width()
 
 func _process(delta: float) -> void:
+	if not GameManager.is_game_running:
+		return
+
 	for segment in segments:
 		segment.position.x -= scroll_speed * delta
 

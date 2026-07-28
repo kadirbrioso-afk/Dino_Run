@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://brerqo1ovoe82"]
 
 [ext_resource type="Texture2D" uid="uid://srjsaevx37kt" path="res://assets/sprites/environment/plx-1.png" id="1_2afh0"]
+[ext_resource type="Script" uid="uid://byjsx8thohano" path="res://script/back_ground.gd" id="1_3a5np"]
 [ext_resource type="Texture2D" uid="uid://cmewwyja5usiu" path="res://assets/sprites/environment/plx-2.png" id="2_3a5np"]
 [ext_resource type="Texture2D" uid="uid://o50f1uv2tyyh" path="res://assets/sprites/environment/plx-3.png" id="3_ryn04"]
 [ext_resource type="Texture2D" uid="uid://d3dqfwarb42o8" path="res://assets/sprites/environment/plx-4.png" id="4_1h8qj"]
 [ext_resource type="Texture2D" uid="uid://c0jujuqjrork8" path="res://assets/sprites/environment/plx-5.png" id="5_qxebq"]
 
 [node name="BackGround" type="ParallaxBackground" unique_id=2066364665]
+script = ExtResource("1_3a5np")
+scroll_speed = 500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1225713397]
 scale = Vector2(1.1111112, 1.1064814)

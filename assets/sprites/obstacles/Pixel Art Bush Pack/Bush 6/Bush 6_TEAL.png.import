@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0wr5hbqeu5yx"
-path="res://.godot/imported/mort.png-bdd5c120da19fc66b1fbda64c5d27ca2.ctex"
+uid="uid://t1djtrxbc6s4"
+path="res://.godot/imported/Bush 6_TEAL.png-676755a9cad46d34b6625dbf575a6f3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/mort.png"
-dest_files=["res://.godot/imported/mort.png-bdd5c120da19fc66b1fbda64c5d27ca2.ctex"]
+source_file="res://assets/sprites/obstacles/Pixel Art Bush Pack/Bush 6/Bush 6_TEAL.png"
+dest_files=["res://.godot/imported/Bush 6_TEAL.png-676755a9cad46d34b6625dbf575a6f3f.ctex"]
 
 [params]
 

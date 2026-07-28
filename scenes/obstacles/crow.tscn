@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://bao3ydhahwxw"]
+
+[ext_resource type="Script" uid="uid://jmhi4firhkqt" path="res://script/obstacle.gd" id="1_jgkm5"]
+[ext_resource type="Texture2D" uid="uid://b1fugq1mxsjsv" path="res://assets/sprites/obstacles/Crow.png" id="2_moy17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5xc2"]
+atlas = ExtResource("2_moy17")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v6ya"]
+atlas = ExtResource("2_moy17")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3k3q"]
+atlas = ExtResource("2_moy17")
+region = Rect2(0, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54fn4"]
+atlas = ExtResource("2_moy17")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8fsg"]
+atlas = ExtResource("2_moy17")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62am1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5xc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v6ya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3k3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54fn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8fsg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jgkm5"]
+radius = 13.333493
+height = 67.37457
+
+[node name="Crow" type="Area2D" unique_id=311460995]
+script = ExtResource("1_jgkm5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=308914901]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_62am1")
+autoplay = "default"
+frame_progress = 0.82038003
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2048770643]
+position = Vector2(-8, 2)
+rotation = -1.3089969
+shape = SubResource("CapsuleShape2D_jgkm5")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=889359893]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
