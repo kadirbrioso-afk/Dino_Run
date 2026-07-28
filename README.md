@@ -46,8 +46,8 @@ El proyecto se está construyendo de forma incremental siguiendo un roadmap por 
 
 - [x] **Fase 1:** Configuración del proyecto (resolución, input map, filtrado de texturas)
 - [x] **Fase 2:** Personaje principal — física de salto, gravedad, agachado y animaciones
-- [ ] **Fase 3:** Escenario y suelo infinito
-- [ ] **Fase 4:** Sistema de obstáculos (spawner de cactus y pterodáctilos)
+- [x] **Fase 3:** Escenario y suelo infinito
+- [x] **Fase 4:** Sistema de obstáculos (spawner de arbustos y cuervos)
 - [ ] **Fase 5:** Colisiones y Game Over
 - [ ] **Fase 6:** Sistema de puntuación (score y high score persistente)
 - [ ] **Fase 7:** Interfaz de usuario (pantalla de inicio, HUD, Game Over)
