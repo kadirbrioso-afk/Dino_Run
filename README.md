@@ -10,11 +10,25 @@ Estética **Pixel Art** con sonidos retro, física de salto/agachado, obstáculo
 
 | Acción | Tecla |
 |---|---|
-| Saltar | `Espacio` / `Flecha Arriba` |
+| Saltar / Iniciar partida | `Espacio` / `Flecha Arriba` |
 | Agacharse | `Flecha Abajo` / `Ctrl` |
-| Reiniciar partida | `Enter` |
+| Iniciar / Reintentar | `Enter` |
 
-El objetivo es sobrevivir el mayor tiempo/distancia posible esquivando cactus y pterodáctilos, mientras la velocidad del juego aumenta progresivamente.
+El objetivo es sobrevivir el mayor tiempo/distancia posible esquivando arbustos y pterodáctilos, mientras la velocidad del juego aumenta progresivamente.
+
+> 💡 Tras un Game Over, `Enter` reinicia la partida directamente, sin pasar por la pantalla de inicio.
+
+---
+
+## ✨ Características
+
+- **Salto responsivo** con *coyote time* y *jump buffer* para una respuesta precisa
+- **Fast-fall**: agacharse en el aire acelera la caída
+- **Dificultad progresiva**: la velocidad aumenta con el tiempo de partida
+- **Puntuación persistente**: el *high score* se guarda entre sesiones y se actualiza en vivo, con aviso de **New Record!**
+- **Obstáculos variados**: arbustos con color aleatorio y pterodáctilos a alturas variables
+- **Estética Pixel Art** con efectos de *juice* (hit-flash, parpadeo) y sonidos retro
+- **Reinicio directo** tras el Game Over
 
 ---
 
