@@ -7,13 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bpbh7v4oewi4s" path="res://scenes/obstacles/bush.tscn" id="4_l3cfh"]
 [ext_resource type="Script" uid="uid://cjb7vg6uuxp28" path="res://script/obstacle_spawner.gd" id="4_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://bao3ydhahwxw" path="res://scenes/obstacles/crow.tscn" id="5_6q06x"]
-[ext_resource type="PackedScene" uid="uid://d9hz4m5k2qbrt" path="res://scenes/ui/HUD.tscn" id="6_ui"]
+[ext_resource type="PackedScene" uid="uid://e25jk8cijf02" path="res://scenes/ui/HUD.tscn" id="6_ui"]
 
 [node name="Main" type="Node" unique_id=328504696]
 script = ExtResource("1_hujxm")
 
 [node name="BackGround" parent="." unique_id=2066364665 instance=ExtResource("2_6q06x")]
-speed_scale = 0.4
 
 [node name="Ground" parent="." unique_id=1892139230 instance=ExtResource("3_ow5a4")]
 position = Vector2(0, 8)

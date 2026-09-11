@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://d9hz4m5k2qbrt"]
+[gd_scene format=3 uid="uid://e25jk8cijf02"]
 
 [ext_resource type="Script" uid="uid://c2v7wq9tn3kds" path="res://script/HUD.gd" id="1_hud"]
-[ext_resource type="FontFile" uid="uid://ceoxmbfhwbm41" path="res://assets/fonts/retro.ttf" id="2_font"]
+[ext_resource type="FontFile" uid="uid://cg8bvhq3s1mp2" path="res://assets/fonts/PressStart2P-Regular.ttf" id="2_font"]
 [ext_resource type="AudioStream" uid="uid://deyoclcju4451" path="res://assets/audio/sfx/Pop Thumb.mp3" id="3_audio"]
 
 [node name="HUD" type="CanvasLayer"]

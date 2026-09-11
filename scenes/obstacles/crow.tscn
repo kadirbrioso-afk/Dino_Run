@@ -63,10 +63,9 @@ frame_progress = 0.82038003
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2048770643]
-position = Vector2(-8, 2)
+position = Vector2(-4, -4)
 rotation = -1.3089969
 shape = SubResource("CapsuleShape2D_jgkm5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=889359893]
-
-
+position = Vector2(0, -2)

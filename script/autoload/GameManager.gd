@@ -11,6 +11,9 @@ const BASE_SPEED: float = 600.0
 const MAX_SPEED: float = 1400.0
 const SPEED_INCREASE_PER_SECOND: float = 8.0
 
+const MUSIC_VOLUME_DB: float = -20.0
+const MUSIC_STREAM: AudioStream = preload("res://assets/audio/music/gigachad.ogg")
+
 var current_speed: float = BASE_SPEED
 var is_game_running: bool = false
 var current_score: float = 0.0
@@ -19,9 +22,18 @@ var last_game_ended: bool = false
 var new_record: bool = false
 
 var _last_emitted_score: int = -1
+var _music: AudioStreamPlayer
 
 func _ready() -> void:
+	_setup_music()
 	_load_high_score()
+
+func _setup_music() -> void:
+	_music = AudioStreamPlayer.new()
+	_music.stream = MUSIC_STREAM
+	_music.volume_db = MUSIC_VOLUME_DB
+	add_child(_music)
+	_music.play()
 
 func start_game() -> void:
 	if is_game_running:

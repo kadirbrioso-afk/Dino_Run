@@ -56,6 +56,6 @@ func _spawn_crow() -> void:
 		return
 
 	var crow: Area2D = crow_escene.instantiate()
-	# Pequeña variación aleatoria en la altura para evitar patrones repetitivos
-	crow.global_position = spawn_point_air.global_position + Vector2(0, randf_range(-crow_height_spread, crow_height_spread))
+	# Pequeña variación hacia arriba para evitar patrones repetitivos
+	crow.global_position = spawn_point_air.global_position + Vector2(0, -randf() * crow_height_spread)
 	get_parent().add_child(crow)
