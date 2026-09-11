@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://0wr5hbqeu5yx" path="res://assets/sprites/dino/mort.png" id="2_5hcym"]
 [ext_resource type="AudioStream" uid="uid://bcmtwn1w4phdq" path="res://assets/audio/sfx/jump.wav" id="3_dg3b3"]
 [ext_resource type="AudioStream" uid="uid://bv0fafaeqqeyl" path="res://assets/audio/sfx/Swoosh.mp3" id="4_67a4n"]
+[ext_resource type="AudioStream" uid="uid://deyoclcju4451" path="res://assets/audio/sfx/Pop Thumb.mp3" id="5_mo2zq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nft6x"]
 atlas = ExtResource("2_5hcym")
@@ -194,6 +195,9 @@ size = Vector2(74, 124)
 radius = 48.0
 height = 113.49878
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hurt"]
+size = Vector2(80, 140)
+
 [node name="Dino" type="CharacterBody2D" unique_id=407414895]
 script = ExtResource("1_7x1tx")
 metadata/_edit_group_ = true
@@ -201,8 +205,8 @@ metadata/_edit_group_ = true
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1410826637]
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_5hcym")
-animation = &"hurt"
-frame_progress = 0.88075125
+animation = &"idle"
+frame_progress = 0.0
 centered = false
 
 [node name="CollisionStanding" type="CollisionShape2D" parent="." unique_id=311224842]
@@ -214,10 +218,22 @@ position = Vector2(97.999985, 112)
 rotation = 0.2617994
 shape = SubResource("CapsuleShape2D_e72rl")
 
-[node name="jump_sound" type="AudioStreamPlayer" parent="." unique_id=1899564511]
+[node name="JumpSound" type="AudioStreamPlayer" parent="." unique_id=1899564511]
 stream = ExtResource("3_dg3b3")
 volume_db = -25.0
 
-[node name="duck_sound" type="AudioStreamPlayer" parent="." unique_id=82124295]
+[node name="DuckSound" type="AudioStreamPlayer" parent="." unique_id=82124295]
 stream = ExtResource("4_67a4n")
 volume_db = -14.358
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=902311451]
+stream = ExtResource("5_mo2zq")
+volume_db = -8.0
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=702933418]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=510233941]
+position = Vector2(92, 95)
+shape = SubResource("RectangleShape2D_hurt")

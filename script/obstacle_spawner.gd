@@ -7,17 +7,18 @@ extends Node2D
 @export var min_spawn_time: float = 0.8
 @export var max_spawn_time: float = 2.0
 
-@onready var timer:Timer = $Timer
-@onready var spawn_point1: Marker2D = $SpawnPointGround
-@onready var spawn_point2: Marker2D = $SpawnPointAir
+@onready var timer: Timer = $Timer
+@onready var spawn_point_ground: Marker2D = $SpawnPointGround
+@onready var spawn_point_air: Marker2D = $SpawnPointAir
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
-	_start_next_timer()
+	GameManager.game_started.connect(_on_game_started)
 
-func _process(_delta: float) -> void:
-	pass
+func _on_game_started() -> void:
+	# Reinicia la cuenta de obstáculos al empezar una nueva partida
+	timer.stop()
+	_start_next_timer()
 
 func _start_next_timer() -> void:
 	# Elige tiempo aleatorio dentro del rango definido para que no sea predecible
@@ -28,41 +29,31 @@ func _on_timer_timeout() -> void:
 	# Si el juego terminó detenemos el generador
 	if not GameManager.is_game_running:
 		return
-	
+
 	# Lanzaremos un dado que decida aleatoriamente entre los obstáculos
-	var roll_dice:float = randf()
-	
+	var roll_dice: float = randf()
+
 	# 60% Probabilidad Arbusto(bush) , 40% Probabilidad de Cuervo(Crow)
 	if roll_dice < 0.6:
-		_spawn_bush() 
+		_spawn_bush()
 	else:
 		_spawn_crow()
-	
+
 	# Luego de tomar la decisión y generar, iniciar nuevo Timer
-	_start_next_timer()	
+	_start_next_timer()
 
 func _spawn_bush() -> void:
 	if bush_escene == null:
 		return
-	
-	# Instanciar el nodo
-	var bush = bush_escene.instantiate() as Area2D
-	
-	# Asignar posición con Marker2D
-	bush.global_position = spawn_point1.global_position
-	
-	# Añadir a la Escena Main para que aparezca como hijo 
+
+	var bush: Area2D = bush_escene.instantiate()
+	bush.global_position = spawn_point_ground.global_position
 	get_parent().add_child(bush)
 
 func _spawn_crow() -> void:
 	if crow_escene == null:
 		return
-	
-	# Instanciar el nodo
-	var crow = crow_escene.instantiate() as Area2D
-	
-	# Asignar posición con Marker2D
-	crow.global_position = spawn_point2.global_position
-	
-	# Añadir a la Escena Main para que aparezca como hijo 
+
+	var crow: Area2D = crow_escene.instantiate()
+	crow.global_position = spawn_point_air.global_position
 	get_parent().add_child(crow)

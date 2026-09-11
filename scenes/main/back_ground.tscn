@@ -9,7 +9,7 @@
 
 [node name="BackGround" type="ParallaxBackground" unique_id=2066364665]
 script = ExtResource("1_3a5np")
-scroll_speed = 500.0
+speed_scale = 0.4
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1225713397]
 scale = Vector2(1.1111112, 1.1064814)

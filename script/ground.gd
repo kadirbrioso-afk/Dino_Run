@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var scroll_speed: float = 500.0
 @onready var segments: Array[Sprite2D] = [$GroundSegmentA, $GroundSegmentB]
 
 var segment_width: float
@@ -13,7 +12,7 @@ func _process(delta: float) -> void:
 		return
 
 	for segment in segments:
-		segment.position.x -= scroll_speed * delta
+		segment.position.x -= GameManager.current_speed * delta
 
 	# Reposicionar el segmento que salió de pantalla al final del otro
 	for segment in segments:

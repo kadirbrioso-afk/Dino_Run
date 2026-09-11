@@ -7,40 +7,42 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var collision_standing: CollisionShape2D = $CollisionStanding
 @onready var collision_ducking: CollisionShape2D = $CollisionDucking
-@onready var jump_sound: AudioStreamPlayer = $jump_sound 
-@onready var duck_sound: AudioStreamPlayer = $duck_sound
+@onready var hurt_box: Area2D = $HurtBox
+@onready var jump_sound: AudioStreamPlayer = $JumpSound
+@onready var duck_sound: AudioStreamPlayer = $DuckSound
+@onready var hit_sound: AudioStreamPlayer = $HitSound
 
 var is_ducking: bool = false
 
-func  _ready() -> void:
+func _ready() -> void:
+	hurt_box.area_entered.connect(_on_hurt_box_area_entered)
 	GameManager.game_over.connect(_on_game_over)
 
 func _physics_process(delta: float) -> void:
 	if not GameManager.is_game_running:
 		return
-	
+
 	# Aplicar gravedad si no está en el suelo
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
 		velocity.y = 0
-	
+
 	# Saltar (Solo si esta en el suelo)
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 		sprite.play("jump")
-		$jump_sound.play()
+		jump_sound.play()
 
-	# Agacharse 
+	# Agacharse
 	if Input.is_action_pressed("duck") and is_on_floor():
 		_start_duck()
-		$duck_sound.play()
 	else:
 		_stop_duck()
-	
+
 	move_and_slide()
 	_update_animation()
-	
+
 func _start_duck() -> void:
 	if is_ducking:
 		return
@@ -48,14 +50,14 @@ func _start_duck() -> void:
 	duck_sound.play()
 	collision_standing.set_deferred("disabled", true)
 	collision_ducking.set_deferred("disabled", false)
-	
+
 func _stop_duck() -> void:
 	if not is_ducking:
 		return
 	is_ducking = false
 	collision_standing.set_deferred("disabled", false)
 	collision_ducking.set_deferred("disabled", true)
-	
+
 func _update_animation():
 	if not is_on_floor():
 		if sprite.animation != "jump":
@@ -64,7 +66,10 @@ func _update_animation():
 		sprite.play("duck")
 	else:
 		sprite.play("run")
-		
+
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
+	hit_sound.play()
+	GameManager.end_game()
 
 func _on_game_over() -> void:
 	# Reproducir animacion de golpe (Game Over)
