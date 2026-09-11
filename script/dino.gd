@@ -10,6 +10,8 @@ extends CharacterBody2D
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var collision_standing: CollisionShape2D = $CollisionStanding
 @onready var collision_ducking: CollisionShape2D = $CollisionDucking
+@onready var hurt_shape_standing: CollisionShape2D = $HurtBox/CollisionShape2D
+@onready var hurt_shape_ducking: CollisionShape2D = $HurtBox/CollisionShapeDucking
 @onready var hurt_box: Area2D = $HurtBox
 @onready var jump_sound: AudioStreamPlayer = $JumpSound
 @onready var duck_sound: AudioStreamPlayer = $DuckSound
@@ -82,10 +84,15 @@ func _set_ducking(should_duck: bool) -> void:
 		duck_sound.play()
 		collision_standing.set_deferred("disabled", true)
 		collision_ducking.set_deferred("disabled", false)
+		# Reduce el hitbox de daño para pasar por debajo de los cuervos
+		hurt_shape_standing.set_deferred("disabled", true)
+		hurt_shape_ducking.set_deferred("disabled", false)
 	elif not should_duck and is_ducking:
 		is_ducking = false
 		collision_standing.set_deferred("disabled", false)
 		collision_ducking.set_deferred("disabled", true)
+		hurt_shape_standing.set_deferred("disabled", false)
+		hurt_shape_ducking.set_deferred("disabled", true)
 
 func _update_animation() -> void:
 	if is_ducking:
