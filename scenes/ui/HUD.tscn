@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2v7wq9tn3kds" path="res://script/HUD.gd" id="1_hud"]
 [ext_resource type="FontFile" uid="uid://ceoxmbfhwbm41" path="res://assets/fonts/retro.ttf" id="2_font"]
+[ext_resource type="AudioStream" uid="uid://deyoclcju4451" path="res://assets/audio/sfx/Pop Thumb.mp3" id="3_audio"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
@@ -32,7 +33,7 @@ offset_right = -230.0
 offset_bottom = 46.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 28
 text = "HI 0000"
@@ -107,9 +108,22 @@ theme_override_font_sizes/font_size = 32
 text = "Score: 0000"
 horizontal_alignment = 1
 
+[node name="NewRecordLabel" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
+visible = false
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 26
+text = "New Record!"
+horizontal_alignment = 1
+
 [node name="RestartHint" type="Label" parent="GameOverScreen/CenterContainer/VBoxContainer"]
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 20
 text = "Presiona Enter para reintentar"
 horizontal_alignment = 1
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_audio")
+volume_db = -6.0
+pitch_scale = 0.6

@@ -6,6 +6,7 @@ extends Node2D
 
 @export var min_spawn_time: float = 0.8
 @export var max_spawn_time: float = 2.0
+@export var crow_height_spread: float = 20.0
 
 @onready var timer: Timer = $Timer
 @onready var spawn_point_ground: Marker2D = $SpawnPointGround
@@ -55,5 +56,6 @@ func _spawn_crow() -> void:
 		return
 
 	var crow: Area2D = crow_escene.instantiate()
-	crow.global_position = spawn_point_air.global_position
+	# Pequeña variación aleatoria en la altura para evitar patrones repetitivos
+	crow.global_position = spawn_point_air.global_position + Vector2(0, randf_range(-crow_height_spread, crow_height_spread))
 	get_parent().add_child(crow)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://jmhi4firhkqt" path="res://script/obstacle.gd" id="1_23f01"]
 [ext_resource type="Texture2D" uid="uid://bj6pgb8acohuk" path="res://assets/sprites/obstacles/Pixel Art Bush Pack/Bush 2/Bush 2_YELLOW.png" id="2_x7lxn"]
+[ext_resource type="Script" uid="uid://c7fb9dq6n2mqp" path="res://script/bush_variant.gd" id="3_bush_variant"]
 
 [node name="bush" type="Area2D" unique_id=1276565664 groups=["Obstacles"]]
 collision_layer = 4
@@ -11,6 +12,7 @@ script = ExtResource("1_23f01")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1751608768]
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_x7lxn")
+script = ExtResource("3_bush_variant")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1797535103]
 scale = Vector2(3, 3)
